@@ -1,8 +1,8 @@
-[![npm](https://img.shields.io/npm/v/nativescript-master-technology.svg)](https://www.npmjs.com/package/nativescript-master-technology)
-[![npm](https://img.shields.io/npm/l/nativescript-master-technology.svg)](https://www.npmjs.com/package/nativescript-master-technology)
-[![npm](https://img.shields.io/npm/dt/nativescript-master-technology.svg?label=npm%20d%2fls)](https://www.npmjs.com/package/nativescript-master-technology)
+[![npm](https://img.shields.io/npm/v/nativescript-master-technology-updated.svg)](https://www.npmjs.com/package/nativescript-master-technology-updated)
+[![npm](https://img.shields.io/npm/l/nativescript-master-technology-updated.svg)](https://www.npmjs.com/package/nativescript-master-technology-updated)
+[![npm](https://img.shields.io/npm/dt/nativescript-master-technology-updated.svg?label=npm%20d%2fls)](https://www.npmjs.com/package/nativescript-master-technology-updated)
 
-# nativescript-master-technology
+# nativescript-master-technology-updated
 A library of generic functions that are useful in NativeScript
 
 ## License
@@ -22,7 +22,7 @@ Please feel free to fork this repo and add other utility functions!!!
 ## Installation 
 Supports all NativeScript versions from 2.x till 5.x
   
-tns plugin add nativescript-master-technology
+tns plugin add nativescript-master-technology-updated
 
 ## Notes:
 
@@ -34,12 +34,12 @@ The first release of this library had a ton of DOM routines, these have been mov
 To use the  module you must first `require()` it:
 
 ```js
-require( "nativescript-master-technology" );
+require( "nativescript-master-technology-updated" );
 ```
 
  All routines are global; you do not need to keep a reference to the library.
 
- If you get TypeScript complaining about process not being defined, then put `/// <reference path="./node_modules/nativescript-master-technology/references.d.ts" />` in your `references.d.ts`.
+ If you get TypeScript complaining about process not being defined, then put `/// <reference path="./node_modules/nativescript-master-technology-updated/references.d.ts" />` in your `references.d.ts`.
 
 ### Methods
 
