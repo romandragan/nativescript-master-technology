@@ -1,16 +1,16 @@
 {
   "name": "nativescript-master-technology-updated",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A Simple NativeScript Utility Library",
   "main": "master-technology.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nathanaela/nativescript-master-technology.git"
+    "url": "https://github.com/romandragan/nativescript-master-technology.git"
   },
   "nativescript": {
 	"platforms": {
-		"android": "1.0.0",
-		"ios": "1.0.0"
+		"android": "5.4.0",
+		"ios": "5.4.0"
 	},
 	"plugin": {
 	  "nan": "true",
@@ -26,13 +26,6 @@
     "name": "Nathanael Anderson",
     "email": "nathan@master-technology.com"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/nathanaela/nativescript-master-technology/blob/master/LICENSE"
-  },
-  "bugs": {
-    "url": "https://github.com/nathanaela/nativescript-master-technology/issues"
-  },
-  "homepage": "https://github.com/nathanaela/nativescript-master-technology",
+  "homepage": "https://github.com/romandragan/nativescript-master-technology",
   "readmeFilename": "README.md"
 }

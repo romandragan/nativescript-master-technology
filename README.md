@@ -20,7 +20,7 @@ Please feel free to fork this repo and add other utility functions!!!
 
 
 ## Installation 
-Supports both NativeScript 2.x and 3.x
+Supports all NativeScript versions from 2.x till 5.x
   
 tns plugin add nativescript-master-technology
 
