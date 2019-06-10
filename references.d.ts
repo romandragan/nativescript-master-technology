@@ -1,9 +1,9 @@
 declare var global: NodeJS.Global;
-declare var process: Process;
+declare var masterProcess: Process;
 
 declare namespace NodeJS {
     interface Global {
-        process: Process;
+        masterProcess: Process;
     }
 }
 

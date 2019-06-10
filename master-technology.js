@@ -45,11 +45,11 @@ if (!global.performance.now) {
 /***
  * Creates a process class
  */
-if (!global.process) {
-	global.process = {};
+if (!global.masterProcess) {
+	global.masterProcess = {};
 }
-if (!global.process.restart) {
-	global.process.restart = function (msg) {
+if (!global.masterProcess.restart) {
+	global.masterProcess.restart = function (msg) {
 		const application = require('application');
 		const dialogs= require('ui/dialogs');
 		if (global.android) {
@@ -77,8 +77,8 @@ if (!global.process.restart) {
 		}
 	};
 }
-if (!global.process.exit) {
-	global.process.exit = function() {
+if (!global.masterProcess.exit) {
+	global.masterProcess.exit = function() {
 		if (global.android) {
 			const application = require('application');
 			application.android.foregroundActivity.finish();
@@ -88,7 +88,7 @@ if (!global.process.exit) {
 
 	};
 }
-if (!global.process.isDebug) {
+if (!global.masterProcess.isDebug) {
 	if (global.android) {
 
 		const getAppSignatures = function() {
@@ -103,7 +103,7 @@ if (!global.process.isDebug) {
 			}
 		};
 
-		global.process.isDebug = function () {
+		global.masterProcess.isDebug = function () {
 			const DEBUG_PRINCIPAL = new javax.security.auth.x500.X500Principal("CN=Android Debug,O=Android,C=US");
 			try {
 				const signatures = getAppSignatures();
@@ -127,7 +127,7 @@ if (!global.process.isDebug) {
 			return false;
 		};
 	} else if (global.ios) {
-		global.process.isDebug = function() {
+		global.masterProcess.isDebug = function() {
 			// TODO: At this point their doesn't seem to be an easy way to determine if the app is debuggable on iOS from the environment
 			// So We will just check for if we are running on an emulator.
 			// TODO: We might be able to use the ASN.1 info, see https://github.com/blindsightcorp/BSMobileProvision
@@ -135,26 +135,26 @@ if (!global.process.isDebug) {
 			// This is not defined in Debug mode as of TNS 1.8, need to check --release (No console available)
 			// TODO: Check NSProcessInfo.processInfo().environment.objectForKey('BUILD_CONFIGURATION');
 
-			return global.process.isEmulator();
+			return global.masterProcess.isEmulator();
 		};
 	}
 }
-if (!global.process.isEmulator) {
+if (!global.masterProcess.isEmulator) {
 	if (global.android) {
-		global.process.isEmulator = function() {
+		global.masterProcess.isEmulator = function() {
 			var res = android.os.Build.FINGERPRINT;
 			if (res.indexOf("vbox86") >= 0 || res.indexOf("generic") >= 0) { return true; }
 			return false;
 		};
 	} else if (global.ios) {
-		global.process.isEmulator = function() {
+		global.masterProcess.isEmulator = function() {
 			return iosProperty(UIDevice, UIDevice.currentDevice).name.toLowerCase().indexOf("simulator") !== -1;
 		};
 	}
 }
-if (!global.process.version) {
+if (!global.masterProcess.version) {
 	if (global.android) {
-		global.process.version = function() {
+		global.masterProcess.version = function() {
 			const context = getContext();
 			try {
 				const packageManager = context.getPackageManager();
@@ -168,7 +168,7 @@ if (!global.process.version) {
 			}
 		};
 	} else {
-		global.process.version = function () {
+		global.masterProcess.version = function () {
 			const mainBundle = iosProperty(NSBundle, NSBundle.mainBundle);
 			const appVersion = mainBundle.objectForInfoDictionaryKey("CFBundleShortVersionString");
 			const buildNumber = mainBundle.objectForInfoDictionaryKey("CFBundleVersion");
@@ -200,7 +200,7 @@ function getContext() {
 
 
 // Thanks to the NativeScript guys (Yavor Georgiev & Georgi Atanasov) for the basis of the processMessages code
-if (!global.process.processMessages) {
+if (!global.masterProcess.processMessages) {
 	if (global.android) {
 		const platform = require('platform');
 		let nextMethod, targetField, prepared=false;
@@ -232,7 +232,7 @@ if (!global.process.processMessages) {
 			prepared = true;
 		};
 
-		global.process.processMessages = function() {
+		global.masterProcess.processMessages = function() {
 			let quit = false, counter = 0;
 			if (!prepared) { prepareMethods(); }
 
@@ -260,7 +260,7 @@ if (!global.process.processMessages) {
 			}
 		};
 	} else if (global.ios) {
-		global.process.processMessages = function() {
+		global.masterProcess.processMessages = function() {
 			NSRunLoop.currentRunLoop().runUntilDate(NSDate.dateWithTimeIntervalSinceNow(0.1));
 		};
 	}
